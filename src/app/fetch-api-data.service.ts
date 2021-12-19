@@ -5,7 +5,7 @@ import { Observable, throwError } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 //Declaring the api url that will provide data for the client app
-const apiUrl = 'YOUR_HOSTED_API_URL_HERE/';
+const apiUrl = 'https://phantasmophobia.herokuapp.com/';
 
 const token = localStorage.getItem('token');
 
@@ -77,9 +77,9 @@ export class FetchApiDataService {
     );
   }
 
-  public getDirector(directorNane: string): Observable<any> {
+  public getDirector(directorName: string): Observable<any> {
     const response = this.http.get(
-      apiUrl + 'directors/' + directorNane,
+      apiUrl + 'movies/directors/' + directorName,
       headers
     );
     return response.pipe(
@@ -90,7 +90,7 @@ export class FetchApiDataService {
 
   public getGenre(genreName: string): Observable<any> {
     const response = this.http.get(
-      apiUrl + 'genres/' + genreName,
+      apiUrl + 'movies/genres/' + genreName,
       headers
     );
     return response.pipe(
